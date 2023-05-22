@@ -21,6 +21,7 @@ export class AuthorizationGuard implements CanActivate {
   }
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const { req, res } = GqlExecutionContext.create(context).getContext();
+    console.log(this.AUTH0_DOMAIN);
 
     const checkJWT = promisify(
       jwt({
@@ -28,7 +29,7 @@ export class AuthorizationGuard implements CanActivate {
           cache: true,
           rateLimit: true,
           jwksRequestsPerMinute: 5,
-          jwksUri: `this.${this.AUTH0_DOMAIN}.well-known/jwks.json`,
+          jwksUri: `${this.AUTH0_DOMAIN}.well-known/jwks.json`,
         }) as GetVerificationKey,
         audience: this.AUTH_AUDIENCE,
         issuer: this.AUTH0_DOMAIN,
