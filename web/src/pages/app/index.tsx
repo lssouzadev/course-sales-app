@@ -11,6 +11,9 @@ export default function Home() {
       <pre>
       {JSON.stringify(user, null, 2)}
       </pre>
+      <div>
+        <a href="/api/auth/logout">LOG</a>
+      </div>
     </div>
   )
 }
