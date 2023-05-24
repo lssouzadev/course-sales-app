@@ -10,7 +10,7 @@ services:
     environment:
       - POSTGRESQL_USERNAME=docker
       - POSTGRESQL_PASSWORD=docker
-      - POSTGRESQL_DATABASE=appfull
+      - POSTGRESQL_DATABASE=app
     volumes:
       - 'postgresql_data:/bitnami/postgresql'
 
