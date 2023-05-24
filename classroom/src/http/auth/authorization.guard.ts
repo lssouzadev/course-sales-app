@@ -28,7 +28,7 @@ export class AuthorizationGuard implements CanActivate {
           cache: true,
           rateLimit: true,
           jwksRequestsPerMinute: 5,
-          jwksUri: `this.${this.AUTH0_DOMAIN}.well-known/jwks.json`,
+          jwksUri: `${this.AUTH0_DOMAIN}.well-known/jwks.json`,
         }) as GetVerificationKey,
         audience: this.AUTH_AUDIENCE,
         issuer: this.AUTH0_DOMAIN,
@@ -38,6 +38,7 @@ export class AuthorizationGuard implements CanActivate {
 
     try {
       await checkJWT(req, res);
+
       return true;
     } catch (err) {
       throw new UnauthorizedException(err);
