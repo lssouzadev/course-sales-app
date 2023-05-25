@@ -9,7 +9,9 @@ import { GraphQLModule } from '@nestjs/graphql';
       driver: ApolloGatewayDriver,
       server: {
         context: ({ req }) => {
-          return { headers: req.headers };
+          return {
+            headers: req.headers,
+          };
         },
       },
       gateway: {
